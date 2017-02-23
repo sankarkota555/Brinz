@@ -12,25 +12,45 @@
 	<packaging>war</packaging>
 	<name>BrinzWeb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<properties>
-	   <wro4j.version>1.8.0</wro4j.version>
+		<wro4j.version>1.8.0</wro4j.version>
 	</properties>
 
 	<dependencies>
+	
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Service project as dependency -->
+		<dependency>
+			<groupId>com.brinz</groupId>
+			<artifactId>BrinzService</artifactId>
+			<version>${project-version}</version>
+		</dependency>
+
 	</dependencies>
 
 
 	<build>
 		<finalName>BrinzWeb</finalName>
 		<plugins>
-		
-            <!-- WRO4J plugin -->
+
+			<!-- WRO4J plugin -->
 			<plugin>
 				<groupId>ro.isdc.wro4j</groupId>
 				<artifactId>wro4j-maven-plugin</artifactId>
@@ -49,7 +69,7 @@
 					<contextFolder>${basedir}/src/main/webapp/</contextFolder>
 				</configuration>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 
