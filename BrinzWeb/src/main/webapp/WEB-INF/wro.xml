@@ -1,0 +1,16 @@
+<!DOCTYPE xml>
+<groups xmlns="http://www.isdc.ro/wro">
+	<group name="plugin">
+
+
+		<!-- <css>/webjars/xeditable.css</css> -->
+
+		<!-- <js>/resources/app/app.js</js> -->
+
+	</group>
+	<group name="custom">
+
+		<js>/resources/scripts/main/**.js</js>
+
+	</group>
+</groups>       

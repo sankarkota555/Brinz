@@ -12,6 +12,11 @@
 	<packaging>war</packaging>
 	<name>BrinzWeb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	
+	<properties>
+	   <wro4j.version>1.8.0</wro4j.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -20,8 +25,32 @@
 		</dependency>
 	</dependencies>
 
+
 	<build>
 		<finalName>BrinzWeb</finalName>
+		<plugins>
+		
+            <!-- WRO4J plugin -->
+			<plugin>
+				<groupId>ro.isdc.wro4j</groupId>
+				<artifactId>wro4j-maven-plugin</artifactId>
+				<version>${wro4j.version}</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<jsDestinationFolder>${project.build.directory}/${project.build.finalName}/</jsDestinationFolder>
+					<cssDestinationFolder>${project.build.directory}/${project.build.finalName}/</cssDestinationFolder>
+					<contextFolder>${basedir}/src/main/webapp/</contextFolder>
+				</configuration>
+			</plugin>
+			
+		</plugins>
 	</build>
 
 </project>
