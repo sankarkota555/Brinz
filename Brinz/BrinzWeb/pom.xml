@@ -13,12 +13,19 @@
 	<name>BrinzWeb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
+	<!-- All versions and properties -->
 	<properties>
 		<wro4j.version>1.8.0</wro4j.version>
+		<jquery.version>3.1.1</jquery.version>
+		<angular.version>1.5.9</angular.version>
+		<angular-ui-router.version>0.2.18</angular-ui-router.version>
+		<angular-ui-bootstrap.version>2.2.0</angular-ui-bootstrap.version>
+		<bootstrap.version>3.3.6</bootstrap.version>
+
 	</properties>
 
 	<dependencies>
-	
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -43,8 +50,43 @@
 			<version>${project-version}</version>
 		</dependency>
 
-	</dependencies>
+		<!-- Dependencies for web jars -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>${jquery.version}</version>
+			<scope>compile</scope>
+		</dependency>
 
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>angularjs</artifactId>
+			<version>${angular.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>${bootstrap.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>angular-ui-router</artifactId>
+			<version>${angular-ui-router.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>angular-ui-bootstrap</artifactId>
+			<version>${angular-ui-bootstrap.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+	</dependencies>
 
 	<build>
 		<finalName>BrinzWeb</finalName>
@@ -69,6 +111,17 @@
 					<contextFolder>${basedir}/src/main/webapp/</contextFolder>
 				</configuration>
 			</plugin>
+			
+			
+			
+				<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<packagingExcludes>%regex[WEB-INF/lib/angular.*.jar]</packagingExcludes>
+				</configuration>
+			</plugin>
+			
 
 		</plugins>
 	</build>

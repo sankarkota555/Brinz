@@ -2,15 +2,23 @@
 <groups xmlns="http://www.isdc.ro/wro">
 	<group name="plugin">
 
-
 		<!-- <css>/webjars/xeditable.css</css> -->
 
 		<!-- <js>/resources/app/app.js</js> -->
 
+		<js>/webjars/3.1.1/jquery.js</js>
+
+		<js>/webjars/angular.js</js>
+		<js>/webjars/angular-animate.js</js>
+		<js>/webjars/angular-sanitize.js</js>
+		<js>/webjars/angular-ui-router.js</js>
+		<js>/webjars/ui-bootstrap.js</js>
+		<js>/webjars/ui-bootstrap-tpls.js</js>
+
 	</group>
 	<group name="custom">
-
+		<js>/resources/scripts/app.js</js>
+		<js>/resources/scripts/routes/**.js</js>
 		<js>/resources/scripts/main/**.js</js>
-
 	</group>
 </groups>       
