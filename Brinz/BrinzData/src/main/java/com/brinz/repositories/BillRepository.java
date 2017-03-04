@@ -1,4 +1,4 @@
-package com.brinz.repository;
+package com.brinz.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
