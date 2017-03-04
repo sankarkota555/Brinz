@@ -1,15 +1,16 @@
 "use strict";
 {
 
-    function menu() {
-        return {
-            template: require('./menu.template.html'),
-            controller: 'menuController',
-            controllerAs: 'menuController'
-        }
+    function billingService() {
+        const me = this;
+
+        me.saveBill = function () {
+           
+        };
+
     };
 
     //angular.module("Brinz").directive('menu', menu);
 
-    app.directive('menu', menu);
+    app.service('billingService', billingService);
 };
