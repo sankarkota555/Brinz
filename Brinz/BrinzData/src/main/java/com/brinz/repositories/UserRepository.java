@@ -2,10 +2,10 @@ package com.brinz.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.brinz.domain.User;
+import com.brinz.domain.BrinzUser;
 
-public interface UserRepository extends CrudRepository<User, Integer> {
+public interface UserRepository extends CrudRepository<BrinzUser, Integer> {
 
-  User findByUserName(String userName);
+  BrinzUser findByUserName(String userName);
 
 }

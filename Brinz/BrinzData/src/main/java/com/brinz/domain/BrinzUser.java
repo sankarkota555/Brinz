@@ -14,7 +14,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name = "Brinz_users")
 @DynamicUpdate
-public class User implements Serializable {
+public class BrinzUser implements Serializable {
 
   private static final long serialVersionUID = -6566053542294070958L;
 

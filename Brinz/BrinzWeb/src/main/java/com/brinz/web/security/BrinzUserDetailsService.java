@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import com.brinz.domain.BrinzUser;
 import com.brinz.repositories.UserRepository;
 
 
@@ -30,7 +31,7 @@ public class BrinzUserDetailsService implements UserDetailsService {
   @Override
   public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
     
-    com.brinz.domain.User user = userRepository.findByUserName(userName);
+    BrinzUser user = userRepository.findByUserName(userName);
 
     final Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>();
     log.info("user role from DB: {} for user with name {}", user.getRole(), user.getUserName());
