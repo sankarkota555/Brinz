@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.brinz.domain.Item;
-import com.brinz.repository.ItemRepository;
+import com.brinz.repositories.ItemRepository;
 import com.brinz.service.ItemService;
 
 @Service

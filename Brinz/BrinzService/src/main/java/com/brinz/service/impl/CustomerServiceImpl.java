@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import com.brinz.domain.Customer;
-import com.brinz.repository.CustomerRepository;
+import com.brinz.repositories.CustomerRepository;
 import com.brinz.service.CustomerService;
 
 @Service
