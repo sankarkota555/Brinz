@@ -43,11 +43,23 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- dependency for spring security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
 		<!-- Service project as dependency -->
 		<dependency>
 			<groupId>com.brinz</groupId>
 			<artifactId>BrinzService</artifactId>
 			<version>${project-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>1.0</version>
 		</dependency>
 
 		<!-- Dependencies for web jars -->
@@ -64,7 +76,7 @@
 			<version>${angular.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
@@ -111,17 +123,17 @@
 					<contextFolder>${basedir}/src/main/webapp/</contextFolder>
 				</configuration>
 			</plugin>
-			
-			
-			
-				<plugin>
+
+
+
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
 					<packagingExcludes>%regex[WEB-INF/lib/angular.*.jar]</packagingExcludes>
 				</configuration>
 			</plugin>
-			
+
 
 		</plugins>
 	</build>
