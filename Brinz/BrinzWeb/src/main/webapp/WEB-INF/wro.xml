@@ -14,11 +14,17 @@
 		<js>/webjars/angular-ui-router.js</js>
 		<js>/webjars/ui-bootstrap.js</js>
 		<js>/webjars/ui-bootstrap-tpls.js</js>
+		
+		<css>/webjars/bootstrap.css</css>
+		
 
 	</group>
 	<group name="custom">
 		<js>/resources/scripts/app.js</js>
 		<js>/resources/scripts/routes/**.js</js>
 		<js>/resources/scripts/main/**.js</js>
+		
+	<!-- 	<css>/**.css</css> -->
+		<css>/**.less</css>
 	</group>
 </groups>       
