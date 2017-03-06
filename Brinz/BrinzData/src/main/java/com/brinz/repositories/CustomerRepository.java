@@ -7,6 +7,6 @@ import com.brinz.domain.Customer;
 
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
 
-  Customer findByCustomerName();
+  Customer findByCustomerName(String customerName);
 
 }

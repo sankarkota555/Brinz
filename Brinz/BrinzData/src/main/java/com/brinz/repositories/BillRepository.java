@@ -6,6 +6,6 @@ import com.brinz.domain.Bill;
 
 public interface BillRepository extends CrudRepository<Bill, Long> {
 
-  Bill findByBillId();
+  Bill findByBillId(Long billId);
 
 }
