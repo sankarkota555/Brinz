@@ -63,7 +63,7 @@ public class HibernateConfig {
     log.info("factory: " + factory);
     factory.setDataSource(getDataSource());
     factory.setJpaVendorAdapter(getHibernateJpaAdapter());
-    factory.setPackagesToScan("com.payment.domain"); // packages where you wrote @Entity classes.
+    factory.setPackagesToScan("com.brinz.domain"); // packages where you wrote @Entity classes.
                                                      // (Domain classes)
     log.info("set packages to scan: ");
     Properties hibernateProperties = new Properties();
