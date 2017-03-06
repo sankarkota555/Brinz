@@ -12,7 +12,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "Brinz_users")
+@Table(name = "BRINZ_users")
 @DynamicUpdate
 public class BrinzUser implements Serializable {
 

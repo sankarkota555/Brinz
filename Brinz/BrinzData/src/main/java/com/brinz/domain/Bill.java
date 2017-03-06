@@ -21,7 +21,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "bill")
+@Table(name = "BRINZ_BILL")
 @DynamicInsert
 public class Bill implements Serializable {
 

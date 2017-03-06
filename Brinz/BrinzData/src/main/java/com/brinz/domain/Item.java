@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "Item")
+@Table(name = "BRINZ_ITEM")
 public class Item implements Serializable {
 
   private static final long serialVersionUID = 7948040085269877913L;
