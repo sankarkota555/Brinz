@@ -16,7 +16,6 @@ public class Application extends SpringBootServletInitializer {
 
   @Bean
   public String applicationVersion() {
-    System.out.println("app version: " + this.getClass().getPackage().getImplementationVersion());
     return this.getClass().getPackage().getImplementationVersion();
   }
 
