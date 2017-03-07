@@ -118,8 +118,8 @@
 					</execution>
 				</executions>
 				<configuration>
-					<jsDestinationFolder>${project.build.directory}/${project.build.finalName}/js</jsDestinationFolder>
-					<cssDestinationFolder>${project.build.directory}/${project.build.finalName}/css</cssDestinationFolder>
+					<jsDestinationFolder>${project.build.directory}/${project.build.finalName}/resources/js</jsDestinationFolder>
+					<cssDestinationFolder>${project.build.directory}/${project.build.finalName}/resources/css</cssDestinationFolder>
 					<contextFolder>${basedir}/src/main/webapp/</contextFolder>
 				</configuration>
 			</plugin>
