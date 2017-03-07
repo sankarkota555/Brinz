@@ -130,7 +130,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
-					<packagingExcludes>%regex[WEB-INF/lib/angular.*.jar]</packagingExcludes>
+					<packagingExcludes>resources/scripts/**</packagingExcludes>
+					<!-- <packagingExcludes>%regex[WEB-INF/lib/angular.*.jar]</packagingExcludes> -->
 				</configuration>
 			</plugin>
 
