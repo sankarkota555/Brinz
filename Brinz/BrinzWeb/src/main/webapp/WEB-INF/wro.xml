@@ -6,25 +6,35 @@
 
 		<!-- <js>/resources/app/app.js</js> -->
 
-		<js>/webjars/3.1.1/jquery.js</js>
+		<js>/webjars/2.2.4/jquery.js</js>
 
 		<js>/webjars/angular.js</js>
 		<js>/webjars/angular-animate.js</js>
 		<js>/webjars/angular-sanitize.js</js>
+		<js>/webjars/angular-cookies.js</js>
 		<js>/webjars/angular-ui-router.js</js>
 		<js>/webjars/ui-bootstrap.js</js>
 		<js>/webjars/ui-bootstrap-tpls.js</js>
 		
-		<css>/webjars/bootstrap.css</css>
+		<js>/webjars/bootstrap.js</js>
 		
+		<js>/webjars/ngDialog.min.js</js>
 
+		<css>/webjars/bootstrap.css</css>
+		<css>/webjars/ngDialog.min.css</css>
+		<css>/webjars/ngDialog-theme-default.min.css</css>
+		
 	</group>
 	<group name="custom">
+
 		<js>/resources/scripts/app.js</js>
 		<js>/resources/scripts/routes/**.js</js>
-		<js>/resources/scripts/main/**.js</js>
+		<js>/resources/scripts/interceptor/**.js</js>
 		
-	<!-- 	<css>/**.css</css> -->
+		<js>/resources/scripts/viewPort/**.js</js>
+		<js>/resources/scripts/main/**.js</js>
+
+		<!-- <css>/**.css</css> -->
 		<css>/**.less</css>
 	</group>
 </groups>       
