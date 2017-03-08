@@ -16,10 +16,11 @@
 	<!-- All versions and properties -->
 	<properties>
 		<wro4j.version>1.8.0</wro4j.version>
-		<jquery.version>3.1.1</jquery.version>
+		<jquery.version>2.2.4</jquery.version>
 		<angular.version>1.5.9</angular.version>
 		<angular-ui-router.version>0.2.18</angular-ui-router.version>
 		<angular-ui-bootstrap.version>2.2.0</angular-ui-bootstrap.version>
+		<ngDialog.version>0.3.12</ngDialog.version>
 		<bootstrap.version>3.3.6</bootstrap.version>
 
 	</properties>
@@ -98,6 +99,13 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<!-- For confimation and alert popups -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>ngDialog</artifactId>
+			<version>${ngDialog.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -130,7 +138,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
-					<packagingExcludes>resources/scripts/**</packagingExcludes>
+					<!-- Exclude all js files inside "scripts" directory while generating 
+						WAR -->
+					<packagingExcludes>resources/scripts/**/**.js </packagingExcludes>
 					<!-- <packagingExcludes>%regex[WEB-INF/lib/angular.*.jar]</packagingExcludes> -->
 				</configuration>
 			</plugin>
