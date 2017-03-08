@@ -20,9 +20,10 @@
 		
 		<js>/webjars/ngDialog.min.js</js>
 
-		<css>/webjars/bootstrap.css</css>
+		
 		<css>/webjars/ngDialog.min.css</css>
 		<css>/webjars/ngDialog-theme-default.min.css</css>
+		<css>/webjars/bootstrap.css</css>
 		
 	</group>
 	<group name="custom">

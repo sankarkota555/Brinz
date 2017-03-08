@@ -7,26 +7,13 @@
 
         // show error popup
         me.processError = function (errorRequest, errorMessage, errorMessageDetails) {
-            $mdDialog.show(
-                $mdDialog.alert()
-                    .clickOutsideToClose(false)
-                    .title(errorMessage + " for " + errorRequest)
-                    .textContent(errorMessageDetails)
-                    .ariaLabel('Alert error message')
-                    .ok('Close')
-                    .openFrom({
-                        top: -50,
-                        width: 30,
-                        height: 80
-                    }).closeTo({
-                        right: 1500
-                    })
-            );
+            ngDialog.open({ template: 'res/scripts/main/menu/menu.template.html', className: 'ngdialog-theme-default', closeByDocument: false});
 
         }; // END - processError()
 
         // Confirmation popup
         me.confirmationPopup = function (confirmationMessage, successCallbackFunction, erroCallbackFunction, successParam, errorParam) {
+            // preCloseCallback: 
             const confirmationDialog = $mdDialog.confirm()
                 .title(confirmationMessage)
                 .ariaLabel('confirmation prompt')
@@ -50,7 +37,7 @@
         }; // END - processError()
 
         // show alert popup
-        me.alertPopup = function (alertTitle, alertDetails,sucessCallbackFunction) {
+        me.alertPopup = function (alertTitle, alertDetails, sucessCallbackFunction) {
             $mdDialog.show(
                 $mdDialog.alert()
                     .clickOutsideToClose(false)
@@ -67,7 +54,7 @@
                     })
             ).then(function () {
                 sucessCallbackFunction();
-            },null);
+            }, null);
 
         }; // END - processError()
 
