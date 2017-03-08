@@ -9,7 +9,7 @@
             url: '/',
         }).state('billing', {
             url: '/billing',
-            templateUrl: 'res/app/main/viewPort/content/billing/billing.template.html',
+            templateUrl: 'res/scripts/main/billing/billing.template.html',
             controller: 'billingController',
             controllerAs: 'billingController'
         }).state('viewBills', {

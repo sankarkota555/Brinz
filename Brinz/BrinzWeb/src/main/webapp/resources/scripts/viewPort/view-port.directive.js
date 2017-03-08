@@ -3,12 +3,12 @@
 
     function viewPort() {
         return {
-            template: require('./view-port.template.html'),
+        	templateUrl : "res/scripts/viewPort/view-port.template.html",
             controller: 'viewPortController',
             controllerAs: 'viewPortController'
         }
     };
 
-    angular.module('payment').directive('viewPort', viewPort);
+    app.directive('viewPort', viewPort);
 
 };

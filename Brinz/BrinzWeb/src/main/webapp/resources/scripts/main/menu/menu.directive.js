@@ -3,7 +3,7 @@
 
     function menu() {
         return {
-            template: require('./menu.template.html'),
+            templateUrl: "res/scripts/main/menu/menu.template.html",
             controller: 'menuController',
             controllerAs: 'menuController'
         }
