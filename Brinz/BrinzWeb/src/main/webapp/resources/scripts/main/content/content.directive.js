@@ -3,7 +3,8 @@
 
     function content() {
         return {
-            templateUrl: "res/scripts/main/content/content.template.html",      
+            restrict: 'E',
+            templateUrl: "res/scripts/main/content/content.template.html",
         }
     };
 
