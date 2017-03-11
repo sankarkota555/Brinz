@@ -3,13 +3,16 @@
 
     function billingController($scope, utilsService) {
         const me = this;
+        me.bill = { };
+        me.bill.items = [{}];
+
 
         me.appStart = "RapidNetSports";
 
 
-      //utilsService.processError(null,null,null);
+        //utilsService.processError(null,null,null);
 
-      console.log("inside billing conreolller");
+        console.log("inside billing conreolller");
 
         /* $scope.$watch(function(){ return menuService.menuBackground;},function(newValue,oldValue) {
              me.menuBacground = newValue;

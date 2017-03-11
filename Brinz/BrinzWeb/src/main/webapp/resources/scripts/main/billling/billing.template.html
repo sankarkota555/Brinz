@@ -1,4 +1,62 @@
 <div class="row">
- This is billing template
+    <div class="col-xs-1"></div>
+    <div class="col-xs-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading Brinz-bill-heading">Customer Details <span class="glyphicon glyphicon-plus"></span> </div>
+            <div class="panel-body">
+                <form id="customerDetailsForm">
+                    <div class="form-group" ng-class="{'has-error': customerDetailsForm.name.$touched || billingController.bill.customer.name }">
+                        <label for="name">Customer Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Name" ng-required="true" ng-model="billingController.bill.customer.name">
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': customerDetailsForm.phone.$touched || customerDetailsForm.phone.$dirty}">
+                        <label for="name">Mobile Number:</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Address:</label>
+                        <input type="password" class="form-control" id="address" placeholder="Address">
+                    </div>
+                </form>
+            </div>
+        </div>
 
+    </div>
+    <div class="col-xs-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading Brinz-bill-heading">Purchase details</div>
+            <div class="panel-body">
+
+                <div class="row" ng-repeat="item in billingController.bill.items">
+                    <div class="form-group col-xs-3" ng-class="{'has-error': customerDetailsForm.phone.$touched} ">
+                        <label for="name">Item Name:</label>
+                        <input type="text" class="form-control" placeholder="Item Name">
+                    </div>
+                    <div class="form-group col-xs-2">
+                        <label for="name">Number of Kgs:</label>
+                        <input type="text" class="form-control" placeholder="Number of KGS">
+                    </div>
+                    <div class="form-group col-xs-2">
+                        <label for="email">Price per KG:</label>
+                        <input type="text" class="form-control" placeholder="Price per KG">
+                    </div>
+                    <div class="form-group col-xs-1">
+                        <button type="button" class="btn btn-default btn-sm Brinz-add-item-button" title="Click to add Item" ng-click="billingController.addItem()">
+                           <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn btn-default Brinz-float-right">Submit</button>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xs-2"></div>
 </div>
