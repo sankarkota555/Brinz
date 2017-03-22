@@ -1,28 +1,31 @@
 "use strict";
 {
 
-    function billingController($scope, utilsService) {
-        const me = this;
-        me.bill = { };
-        me.bill.items = [{}];
+	function billingController($scope, utilsService, customerService) {
+		const
+			me = this;
+		me.bill = {};
+		me.bill.items = [{}];
+		me.foundCustomers = [];
+
+		me.findCustomers = function (name) {
+			if (name && name.length >= 2) {
+				customerService.findByCustomerName(name).then(
+					function (response) {
+						console.log("returnung data: ", response.data);
+						me.foundCustomers = response.data;
+					},
+					function (response) {
+						console.log("error while searching user:", response);
+						me.foundCustomers = [];
+					});
+			}
+
+		}
 
 
-        me.appStart = "RapidNetSports";
+	}
 
-
-        //utilsService.processError(null,null,null);
-
-        console.log("inside billing conreolller");
-
-        /* $scope.$watch(function(){ return menuService.menuBackground;},function(newValue,oldValue) {
-             me.menuBacground = newValue;
-         });*/
-
-
-
-    };
-
-    //angular.module("payment").controller('viewPortController', viewPortController);
-    app.controller('billingController', billingController);
+	app.controller('billingController', billingController);
 
 };

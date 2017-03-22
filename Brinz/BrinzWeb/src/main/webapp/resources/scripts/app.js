@@ -3,7 +3,8 @@ const app =
 angular.module("Brinz", [
 	                      'ui.router',
 						  'ngCookies',
-						  'ngDialog'
+						  'ngDialog',
+						  'ui.bootstrap'
 						]);
 
 setTimeout(

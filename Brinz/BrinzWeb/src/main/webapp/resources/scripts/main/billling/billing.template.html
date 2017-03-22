@@ -7,7 +7,8 @@
                 <form id="customerDetailsForm">
                     <div class="form-group" ng-class="{'has-error': customerDetailsForm.name.$touched || billingController.bill.customer.name }">
                         <label for="name">Customer Name:</label>
-                        <input type="text" class="form-control" id="name" placeholder="Name" ng-required="true" ng-model="billingController.bill.customer.name">
+                        <input type="text" class="form-control" id="name" placeholder="Name" ng-required="true" ng-model="billingController.bill.customer.name" 
+                             typeahead-wait-ms="200" typeahead-min-length="2" ng-change="billingController.findCustomers(billingController.bill.customer.name)" uib-typeahead="address for address in billingController.foundCustomers">
                     </div>
                     <div class="form-group" ng-class="{'has-error': customerDetailsForm.phone.$touched || customerDetailsForm.phone.$dirty}">
                         <label for="name">Mobile Number:</label>

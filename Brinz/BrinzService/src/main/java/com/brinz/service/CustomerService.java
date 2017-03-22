@@ -1,5 +1,7 @@
 package com.brinz.service;
 
+import java.util.List;
+
 import com.brinz.domain.Customer;
 
 public interface CustomerService {
@@ -12,5 +14,12 @@ public interface CustomerService {
    * @return saved customer ID.
    */
   Long saveCustomer(Customer customer);
+
+  /**
+   * Finds customer by name.
+   * @param name search name
+   * @return {@link List} of {@link Customer}
+   */
+  List<Customer> findCustomersByName(String name);
 
 }
