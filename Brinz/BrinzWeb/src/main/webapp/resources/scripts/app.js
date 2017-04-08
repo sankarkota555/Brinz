@@ -1,11 +1,12 @@
 
-const app = 
-angular.module("Brinz", [
-	                      'ui.router',
-						  'ngCookies',
-						  'ngDialog',
-						  'ui.bootstrap'
-						]);
+const app =
+	angular.module("Brinz", [
+		'ui.router',
+		'ngCookies',
+		'ngDialog',
+		'ui.bootstrap',
+		'ngAnimate'
+	]);
 
 setTimeout(
 	function asyncBootstrap() {
