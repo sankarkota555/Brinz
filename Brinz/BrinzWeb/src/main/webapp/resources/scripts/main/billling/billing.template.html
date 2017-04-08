@@ -2,25 +2,27 @@
     <div class="col-xs-1"></div>
     <div class="col-xs-3">
         <div class="panel panel-primary">
-            <div class="panel-heading Brinz-bill-heading">Customer Details <span class="glyphicon glyphicon-plus"></span> </div>
+            <div class="panel-heading Brinz-bill-heading">Customer Details</div>
             <div class="panel-body">
                 <form id="customerDetailsForm">
                     <div class="form-group" ng-class="{'has-error': customerDetailsForm.name.$touched || billingController.bill.customer.name }">
                         <label for="name">Customer Name:</label>
-                        <input type="text" class="form-control" id="name" placeholder="Name" ng-required="true" ng-model="billingController.bill.customer.name" 
-                             typeahead-wait-ms="200" typeahead-min-length="2" ng-change="billingController.findCustomers(billingController.bill.customer.name)" uib-typeahead="address for address in billingController.foundCustomers">
+                        <input type="text" class="form-control" id="name" placeholder="Name" ng-required="true" ng-model="billingController.bill.customer.selected"
+                            typeahead-wait-ms="200" typeahead-min-length="2" ng-change="billingController.findCustomers(billingController.bill.customer.selected)"
+                            uib-typeahead="customer as customer.customerName for customer in billingController.foundCustomers"
+                            typeahead-select-on-exact="true" typeahead-on-select="billingController.customerSelected($item)">
                     </div>
                     <div class="form-group" ng-class="{'has-error': customerDetailsForm.phone.$touched || customerDetailsForm.phone.$dirty}">
                         <label for="name">Mobile Number:</label>
-                        <input type="text" class="form-control" id="phone" placeholder="Phone">
+                        <input type="text" class="form-control" id="phone" placeholder="Phone" ng-model="billingController.bill.customer.phone">
                     </div>
-                    <div class="form-group">
+                    <!--  <div class="form-group">
                         <label for="email">Email Address:</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="pwd">Address:</label>
-                        <input type="password" class="form-control" id="address" placeholder="Address">
+                        <input type="email" class="form-control" id="email" placeholder="Email" ng-model="billingController.bill.customer.customerName">
+                    </div> -->
+                    <div class="form-group cssSlideUp" ng-show="billingController.bill.customer.selected.creditAmoount">
+                        <label for="amount">Balance Amount:</label>
+                        <input type="text" class="form-control" id="address" placeholder="Balance Amount" ng-readonly="true" ng-model="billingController.bill.customer.selected.creditAmoount">
                     </div>
                 </form>
             </div>
@@ -35,25 +37,31 @@
                 <div class="row" ng-repeat="item in billingController.bill.items">
                     <div class="form-group col-xs-3" ng-class="{'has-error': customerDetailsForm.phone.$touched} ">
                         <label for="name">Item Name:</label>
-                        <input type="text" class="form-control" placeholder="Item Name">
+                        <input type="text" class="form-control" id="name" placeholder="Item Name" ng-required="true" ng-model="item.selectedItem"
+                            typeahead-wait-ms="200" typeahead-min-length="2" ng-change="billingController.findItems(item.selectedItem)"
+                            uib-typeahead="item as item.itemName for item in billingController.foundItems">
                     </div>
                     <div class="form-group col-xs-2">
                         <label for="name">Number of Kgs:</label>
-                        <input type="text" class="form-control" placeholder="Number of KGS">
+                        <input type="text" class="form-control" placeholder="Number of KGS" ng-model="item.kgs">
                     </div>
                     <div class="form-group col-xs-2">
                         <label for="email">Price per KG:</label>
-                        <input type="text" class="form-control" placeholder="Price per KG">
+                        <input type="text" class="form-control" placeholder="Price per KG" ng-model="item.soldPrice">
                     </div>
                     <div class="form-group col-xs-1">
-                        <button type="button" class="btn btn-default btn-sm Brinz-add-item-button" title="Click to add Item" ng-click="billingController.addItem()">
+                        <button type="button" class="btn btn-default btn-sm Brinz-add-item-button" title="Click to add Item" ng-if="$first" ng-click="billingController.addBillItem()">
                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm Brinz-add-item-button" title="Click to delete this item" ng-if="!$first"
+                            ng-click="billingController.bill.items.splice($index,1)">
+                           <span class="glyphicon glyphicon-minus"></span>
                         </button>
                     </div>
 
                 </div>
 
-                <button type="submit" class="btn btn-default Brinz-float-right">Submit</button>
+                <button type="submit" class="btn btn-default Brinz-float-right" ng-click="billingController.saveBill()">Submit</button>
 
             </div>
         </div>

@@ -24,4 +24,11 @@ public interface ItemService {
    */
   List<Item> searchItemsByName(String searchQuery);
 
+  /**
+   * Gives all items avalable.
+   * 
+   * @return {@link Iterable} of {@link Item}s
+   */
+  Iterable<Item> findAllItems();
+
 }

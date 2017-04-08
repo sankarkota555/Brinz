@@ -20,6 +20,9 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "BRINZ_BILL")
 @DynamicInsert

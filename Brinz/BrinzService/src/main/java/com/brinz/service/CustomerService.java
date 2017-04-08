@@ -2,6 +2,7 @@ package com.brinz.service;
 
 import java.util.List;
 
+import com.brinz.DTO.CustomerDTO;
 import com.brinz.domain.Customer;
 
 public interface CustomerService {
@@ -18,8 +19,8 @@ public interface CustomerService {
   /**
    * Finds customer by name.
    * @param name search name
-   * @return {@link List} of {@link Customer}
+   * @return {@link List} of {@link CustomerDTO}
    */
-  List<Customer> findCustomersByName(String name);
+  List<CustomerDTO> findCustomersByName(String name);
 
 }

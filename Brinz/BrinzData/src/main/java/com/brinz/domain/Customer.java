@@ -3,19 +3,21 @@ package com.brinz.domain;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.AssociationOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "BRINZ_CUSTOMER")
@@ -35,7 +37,7 @@ public class Customer implements Serializable {
   private String customerName;
 
   @Column(name = "phone_number", length = 13, unique = true)
-  private Integer phone;
+  private String phone;
 
   @Column(name = "credit_Amoount")
   private Long creditAmoount;
@@ -59,12 +61,20 @@ public class Customer implements Serializable {
     this.customerName = customerName;
   }
 
-  public Integer getPhone() {
+  public String getPhone() {
     return phone;
   }
 
-  public void setPhone(Integer phone) {
+  public void setPhone(String phone) {
     this.phone = phone;
+  }
+
+  public List<Bill> getBills() {
+    return bills;
+  }
+
+  public void setBills(List<Bill> bills) {
+    this.bills = bills;
   }
 
   public Long getCreditAmoount() {

@@ -13,7 +13,7 @@ import com.brinz.service.ItemService;
 public class ItemServiceImpl implements ItemService {
 
   @Autowired
-  ItemRepository itemRepository;
+  private ItemRepository itemRepository;
 
   @Override
   public Integer saveItem(Item item) {
@@ -23,6 +23,11 @@ public class ItemServiceImpl implements ItemService {
   @Override
   public List<Item> searchItemsByName(String searchQuery) {
     return itemRepository.findItemsByName(searchQuery.toLowerCase());
+  }
+
+  @Override
+  public Iterable<Item> findAllItems() {
+   return  itemRepository.findAll();
   }
 
 }

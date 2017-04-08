@@ -25,6 +25,9 @@ public class Item implements Serializable {
   @Column(name = "item_name", length = 100, nullable = false, unique = true)
   private String itemName;
 
+  @Column(name = "price", length = 6)
+  private Integer price;
+
   public Integer getItemId() {
     return itemId;
   }
@@ -39,6 +42,14 @@ public class Item implements Serializable {
 
   public void setItemName(String itemName) {
     this.itemName = itemName;
+  }
+
+  public Integer getPrice() {
+    return price;
+  }
+
+  public void setPrice(Integer price) {
+    this.price = price;
   }
 
 }
