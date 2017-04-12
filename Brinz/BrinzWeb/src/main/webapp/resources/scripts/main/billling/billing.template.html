@@ -36,9 +36,10 @@
             <div class="panel-heading Brinz-bill-heading">Purchase details</div>
             <div class="panel-body">
                 <div class="Brinz-billItems">
-                    <form name="itemDetailsForm">
-                        <div class="row item" ng-repeat="item in billingController.bill.items">
-                            <div class="form-group col-xs-3" ng-class="{'has-error': itemDetailsForm['itemName_'+$index].$touched && !item.selectedItem } ">
+                    <form name="itemDetailsForm" style="overflow: hidden">
+                        <div class="row" ng-repeat="item in billingController.bill.items">
+                            <div class="form-group col-xs-3" ng-class="{'has-error': itemDetailsForm['itemName_'+$index].$touched && !item.selectedItem } "
+                                ng-style=" $last ? { 'height':'200px' } : { 'height':'auto' }">
                                 <label for="name">Item Name:</label>
                                 <input type="text" class="form-control" name="itemName_{{$index}}" placeholder="Item Name" ng-required="true" ng-model="item.selectedItem"
                                     typeahead-wait-ms="200" typeahead-min-length="2" ng-change="billingController.findItems(item.selectedItem)"
