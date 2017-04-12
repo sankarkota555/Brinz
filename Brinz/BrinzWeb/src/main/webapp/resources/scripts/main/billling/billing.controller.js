@@ -8,6 +8,8 @@
 		me.foundCustomers = [];
 		me.foundItems = [];
 
+		$scope.amountReadOnly = true;
+
 		/**
 		 * Seraches for given customer  in DB by name
 		 */
@@ -74,6 +76,7 @@
 			if (item.phone) {
 				//auto update custoemr phone numner
 				me.bill.customer.phone = item.phone;
+				$scope.amountReadOnly = true;
 				//item.creditAmoount;
 			}
 

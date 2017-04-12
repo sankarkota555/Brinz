@@ -4,68 +4,87 @@
         <div class="panel panel-primary">
             <div class="panel-heading Brinz-bill-heading">Customer Details</div>
             <div class="panel-body">
-                <form id="customerDetailsForm">
-                    <div class="form-group" ng-class="{'has-error': customerDetailsForm.name.$touched || billingController.bill.customer.name }">
+                <form name="customerDetailsForm">
+                    <div class="form-group" ng-class="{'has-error': customerDetailsForm.userName.$touched && !billingController.bill.customer.selected}">
                         <label for="name">Customer Name:</label>
-                        <input type="text" class="form-control" id="name" placeholder="Name" ng-required="true" ng-model="billingController.bill.customer.selected"
+                        <input type="text" class="form-control" name="userName" placeholder="Name" ng-required="true" ng-model="billingController.bill.customer.selected"
                             typeahead-wait-ms="200" typeahead-min-length="2" ng-change="billingController.findCustomers(billingController.bill.customer.selected)"
                             uib-typeahead="customer as customer.customerName for customer in billingController.foundCustomers"
                             typeahead-select-on-exact="true" typeahead-on-select="billingController.customerSelected($item)">
+                        <p class="Brinz-lessHeightSlide" ng-show="customerDetailsForm.userName.$touched && !billingController.bill.customer.selected">Please enter customer name</p>
                     </div>
-                    <div class="form-group" ng-class="{'has-error': customerDetailsForm.phone.$touched || customerDetailsForm.phone.$dirty}">
+                    <div class="form-group" ng-class="{'has-error': customerDetailsForm.phone.$touched && !billingController.bill.customer.phone}">
                         <label for="name">Mobile Number:</label>
-                        <input type="text" class="form-control" id="phone" placeholder="Phone" ng-model="billingController.bill.customer.phone">
+                        <input type="text" class="form-control" name="phone" placeholder="Phone" ng-model="billingController.bill.customer.phone">
                     </div>
                     <!--  <div class="form-group">
                         <label for="email">Email Address:</label>
                         <input type="email" class="form-control" id="email" placeholder="Email" ng-model="billingController.bill.customer.customerName">
                     </div> -->
-                    <div class="form-group cssSlideUp" ng-show="billingController.bill.customer.selected.creditAmoount">
+                    <div class="form-group Brinz-cssSlideUp" ng-show="billingController.bill.customer.selected.creditAmoount">
                         <label for="amount">Balance Amount:</label>
-                        <input type="text" class="form-control" id="address" placeholder="Balance Amount" ng-readonly="true" ng-model="billingController.bill.customer.selected.creditAmoount">
+                        <input type="text" class="form-control" placeholder="Balance Amount" ng-readonly="amountReadOnly" ng-dblclick="amountReadOnly=!amountReadOnly"
+                            ng-model="billingController.bill.customer.selected.creditAmoount">
                     </div>
                 </form>
             </div>
         </div>
 
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-7">
         <div class="panel panel-primary">
             <div class="panel-heading Brinz-bill-heading">Purchase details</div>
             <div class="panel-body">
+                <div class="Brinz-billItems">
+                    <form name="itemDetailsForm">
+                        <div class="row item" ng-repeat="item in billingController.bill.items">
+                            <div class="form-group col-xs-3" ng-class="{'has-error': itemDetailsForm['itemName_'+$index].$touched && !item.selectedItem } ">
+                                <label for="name">Item Name:</label>
+                                <input type="text" class="form-control" name="itemName_{{$index}}" placeholder="Item Name" ng-required="true" ng-model="item.selectedItem"
+                                    typeahead-wait-ms="200" typeahead-min-length="2" ng-change="billingController.findItems(item.selectedItem)"
+                                    uib-typeahead="item as item.itemName for item in billingController.foundItems">
+                                <p class="Brinz-lessHeightSlide" ng-show="itemDetailsForm['itemName_'+$index].$touched && !item.selectedItem">Please fill!</p>
+                            </div>
+                            <div class="form-group col-xs-2" ng-class="{'has-error': itemDetailsForm['itemKgs_'+$index].$touched && !item.kgs}">
+                                <label for="name">No.of Kgs:</label>
+                                <input type="text" class="form-control" name="itemKgs_{{$index}}" placeholder="NO.of KGS" ng-model="item.kgs" ng-required="true"
+                                    ng-pattern="/^\d+$/">
+                                <p class="Brinz-lessHeightSlide" ng-show="itemDetailsForm['itemKgs_'+$index].$touched && !item.kgs && !itemDetailsForm['itemKgs_'+$index].$error.pattern">Please fill!</p>
+                                <p class="Brinz-lessHeightSlide" ng-show="itemDetailsForm['itemKgs_'+$index].$error.pattern">Not a number!</p>
+                            </div>
+                            <div class="form-group col-xs-2" ng-class="{'has-error': itemDetailsForm['itemPrice_'+ $index].$touched && !item.soldPrice}">
+                                <label for="email">Price per KG:</label>
+                                <input type="text" class="form-control" name="itemPrice_{{$index}}" placeholder="Price per KG" ng-model="item.soldPrice"
+                                    ng-required="true" ng-pattern="/^\d+$/">
+                                <p class="Brinz-lessHeightSlide" ng-show="itemDetailsForm['itemPrice_'+ $index].$touched && !item.soldPrice && !itemDetailsForm['itemPrice_'+ $index].$error.pattern">Please fill!</p>
+                                <span class="Brinz-lessHeightSlide" ng-show="itemDetailsForm['itemPrice_'+ $index].$error.pattern">Not a number!</span>
+                            </div>
+                            <div class="form-group col-xs-2" ng-class="{'has-error': itemDetailsForm['itemBags_'+ $index].$touched && !item.bags}">
+                                <label for="email">No.of Bags:</label>
+                                <input type="text" class="form-control" name="itemBags_{{$index}}" placeholder="No.of bags" ng-model="item.bags" ng-required="true"
+                                    ng-pattern="/^\d+$/">
+                                <p class="Brinz-lessHeightSlide" ng-show=" itemDetailsForm['itemBags_'+ $index].$touched && !item.bags && !itemDetailsForm['itemBags_'+ $index].$error.pattern">Please fill!</p>
+                                <span class="Brinz-lessHeightSlide" ng-show="itemDetailsForm['itemBags_'+ $index].$error.pattern">Not a number!</span>
+                            </div>
+                            <div class="form-group col-xs-1">
+                                <button type="button" class="btn btn-default btn-sm Brinz-add-item-button" title="Click to add Item" ng-if="$first" ng-click="billingController.addBillItem()">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                 </button>
+                                <button type="button" class="btn btn-default btn-sm Brinz-add-item-button" title="Click to delete this item" ng-if="!$first"
+                                    ng-click="billingController.bill.items.splice($index,1)">
+                                     <span class="glyphicon glyphicon-minus"></span>
+                                 </button>
+                            </div>
 
-                <div class="row" ng-repeat="item in billingController.bill.items">
-                    <div class="form-group col-xs-3" ng-class="{'has-error': customerDetailsForm.phone.$touched} ">
-                        <label for="name">Item Name:</label>
-                        <input type="text" class="form-control" id="name" placeholder="Item Name" ng-required="true" ng-model="item.selectedItem"
-                            typeahead-wait-ms="200" typeahead-min-length="2" ng-change="billingController.findItems(item.selectedItem)"
-                            uib-typeahead="item as item.itemName for item in billingController.foundItems">
-                    </div>
-                    <div class="form-group col-xs-2">
-                        <label for="name">Number of Kgs:</label>
-                        <input type="text" class="form-control" placeholder="Number of KGS" ng-model="item.kgs">
-                    </div>
-                    <div class="form-group col-xs-2">
-                        <label for="email">Price per KG:</label>
-                        <input type="text" class="form-control" placeholder="Price per KG" ng-model="item.soldPrice">
-                    </div>
-                    <div class="form-group col-xs-1">
-                        <button type="button" class="btn btn-default btn-sm Brinz-add-item-button" title="Click to add Item" ng-if="$first" ng-click="billingController.addBillItem()">
-                           <span class="glyphicon glyphicon-plus"></span>
-                        </button>
-                        <button type="button" class="btn btn-default btn-sm Brinz-add-item-button" title="Click to delete this item" ng-if="!$first"
-                            ng-click="billingController.bill.items.splice($index,1)">
-                           <span class="glyphicon glyphicon-minus"></span>
-                        </button>
-                    </div>
-
+                        </div>
+                    </form>
                 </div>
-
-                <button type="submit" class="btn btn-default Brinz-float-right" ng-click="billingController.saveBill()">Submit</button>
+                <button type="submit" class="btn btn-default Brinz-float-right" ng-disabled="customerDetailsForm.$invalid || itemDetailsForm.$invalid"
+                    ng-click="billingController.saveBill()">Submit</button>
 
             </div>
         </div>
 
     </div>
-    <div class="col-xs-2"></div>
+    <div class="col-xs-1"></div>
 </div>
