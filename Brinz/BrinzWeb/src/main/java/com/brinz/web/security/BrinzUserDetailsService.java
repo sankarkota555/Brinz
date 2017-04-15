@@ -30,7 +30,7 @@ public class BrinzUserDetailsService implements UserDetailsService {
 
   @Override
   public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-    
+    log.info("user logging in : "+ userName);
     BrinzUser user = userRepository.findByUserName(userName);
 
     final Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>();
