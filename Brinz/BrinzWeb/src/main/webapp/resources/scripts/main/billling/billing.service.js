@@ -74,7 +74,7 @@
          * Shows popup for confirmation of print bill
          */
         me.printBillConirmation = function (billId) {
-            utilsService.confirmationPopup("Do You want to print this?", me.printBill, null, billId);
+            utilsService.confirmationPopup("Do You want to print this bill?", me.printBill, null, billId);
         };
 
         /**

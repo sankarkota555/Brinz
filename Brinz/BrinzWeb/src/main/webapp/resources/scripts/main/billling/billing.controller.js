@@ -67,7 +67,7 @@
 		 * to save bill.
 		 */
 		me.saveBill = function () {
-			utilsService.confirmationPopup('Are you want to save it', saveBillToDb);
+			utilsService.confirmationPopup('Are you want to save this bill?', saveBillToDb);
 		};
 
 		function saveBillToDb() {

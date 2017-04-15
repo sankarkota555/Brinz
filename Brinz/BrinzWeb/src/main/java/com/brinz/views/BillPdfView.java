@@ -156,7 +156,7 @@ public class BillPdfView extends AbstractItextPdfView {
     // add company heading cell
       headerTable.addCell(headingCell); // add heading of org
     
-      PdfPCell phoneLeftCell = new PdfPCell(new Phrase("Phone num1"));
+      PdfPCell phoneLeftCell = new PdfPCell(new Phrase(BrinzConstantNames.mobileNumberOne));
       phoneLeftCell.setBorder(Rectangle.NO_BORDER);
       phoneLeftCell.setFixedHeight(phoneHeight);
       phoneLeftCell.setHorizontalAlignment(Element.ALIGN_LEFT);
@@ -164,7 +164,7 @@ public class BillPdfView extends AbstractItextPdfView {
       
       headerTable.addCell(phoneLeftCell); // add left side phone
       
-      PdfPCell phoneRightCell = new PdfPCell(new Phrase("Phone num2"));
+      PdfPCell phoneRightCell = new PdfPCell(new Phrase(BrinzConstantNames.mobileNumberTwo));
       phoneRightCell.setBorder(Rectangle.NO_BORDER);
       phoneRightCell.setFixedHeight(phoneHeight);
       phoneRightCell.setHorizontalAlignment(Element.ALIGN_LEFT);
@@ -334,7 +334,7 @@ public class BillPdfView extends AbstractItextPdfView {
     detailsTable.addCell(totalAmount); // add total amount
     
     
-    PdfPCell customerCreditAmount = getPurchaseDetailsCell("Credit/debit", 4);
+    PdfPCell customerCreditAmount = getPurchaseDetailsCell("Credit/debit :", 4);
     /*customerCreditAmount.setHorizontalAlignment(Element.ALIGN_CENTER);
     customerCreditAmount.setBorder(Rectangle.NO_BORDER);
     customerCreditAmount.setColspan(4);
@@ -347,7 +347,7 @@ public class BillPdfView extends AbstractItextPdfView {
     detailsTable.addCell(spaceCell); // add space cell
     detailsTable.addCell(bottomLineCell); // add bottom line
     
-    detailsTable.addCell(getPurchaseDetailsCell("Final Amount", 4)); // add final amount
+    detailsTable.addCell(getPurchaseDetailsCell("Final Amount :", 4)); // add final amount
     detailsTable.addCell(new Phrase(String.valueOf(netAmount+ creditAmount), boldFont)); // add final amount
     
 

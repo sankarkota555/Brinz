@@ -2,12 +2,12 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">WebSiteName</a>
+                <a class="navbar-brand" ui-sref="home">Brinz</a>
             </div>
             <ul class="nav navbar-nav navbar-right" ng-controller="userActivityController as userActivityController">
-                <li ng-class="{ active: isActive('/')}"><a ui-sref="home">Link1</a></li>
-                <li ng-class="{ active: isActive('/billing')}"><a ui-sref="billing">Link1</a></li>
-                <li ng-class="{ active: isActive('/viewBills')}"><a ui-sref="viewBills">VIEW Link1</a></li>
+                <li ng-class="{ active: isActive('/')}"><a ui-sref="home">Home</a></li>
+                <li ng-class="{ active: isActive('/billing')}"><a ui-sref="billing">Billing</a></li>
+                <!-- <li ng-class="{ active: isActive('/viewBills')}"><a ui-sref="viewBills">VIEW Link1</a></li> -->
                 <li ng-class="{ active: isActive('/viewBills')}"><a class="Brinz-cursor" ng-click="userActivityController.logout()">Logout</a></li>
                 <!--  <li ng-class="{ active: isActive('/manage')}"><a ui-sref="manage">Link1</a></li>
                 <li ng-class="{ active: isActive('/gallery')}"><a ui-sref="gallery">GALLERY</a></li> 
