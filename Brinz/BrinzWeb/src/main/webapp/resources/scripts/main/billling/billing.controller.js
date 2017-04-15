@@ -8,7 +8,6 @@
 		me.bill.items = [{ name: "" }];
 		me.foundCustomers = [];
 		me.foundItems = [];
-		me.total = 0;
 
 		$scope.amountReadOnly = true;
 
@@ -74,7 +73,8 @@
 		function saveBillToDb() {
 			billingService.saveBill(me.bill).then(
 				function (response) {
-					utilsService.confirmationPopup('Are you want to save it', saveBillToDb);
+					utilsService.confirmationPopup('Bill saved', null);
+					resetBill();
 				},
 				function (response) {
 					processError(response);
@@ -96,11 +96,21 @@
 		};
 
 		me.calculateTotal = function () {
-			me.total = billingService.calculateTotal(me.bill.items);
+			me.bill.totalAmount = billingService.calculateTotal(me.bill.items);
 		};
 
 		function processError(response) {
 			utilsService.processError(response.data.error, response.data.exception + ":" + response.data.message);
+		}
+
+		function resetBill() {
+			me.bill = {};
+			me.bill.items = [{ name: "" }];
+
+			//reset form validations
+			$scope.customerDetailsForm.$setPristine();
+			$scope.customerDetailsForm.$setUntouched();
+			$scope.itemDetailsForm.$setPristine();
 		}
 
 
