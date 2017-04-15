@@ -10,7 +10,7 @@
          */
         me.logout = function () {
             return $http({
-                url: '/PaymentWeb/logout',
+                url: '/BrinzWeb/logout',
                 method: "POST"
             });
         }
@@ -21,7 +21,7 @@
         me.logoutSuccess = function () {
             let allCookes = $cookies.getAll();
             $cookies.remove("XSRF-TOKEN", { path: "/" });
-            $cookies.remove("XSRF-TOKEN", { path: "/PaymentWeb" });
+            $cookies.remove("XSRF-TOKEN", { path: "/BrinzWeb" });
 
             console.log("all cookes");
             console.log(allCookes);
