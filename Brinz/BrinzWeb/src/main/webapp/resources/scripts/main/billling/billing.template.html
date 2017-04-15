@@ -49,21 +49,21 @@
                             <div class="form-group col-xs-2" ng-class="{'has-error': itemDetailsForm['itemKgs_'+$index].$touched && !item.kgs}">
                                 <label for="name">No.of Kgs:</label>
                                 <input type="text" class="form-control" name="itemKgs_{{$index}}" placeholder="No.of KGS" ng-model="item.kgs" ng-required="true"
-                                    ng-pattern="/^\d+$/">
+                                    ng-pattern="/^\d+$/" ng-change="billingController.calculateTotal()">
                                 <p class="Brinz-lessHeightSlide" ng-show="itemDetailsForm['itemKgs_'+$index].$touched && !item.kgs && !itemDetailsForm['itemKgs_'+$index].$error.pattern">Please fill!</p>
                                 <p class="Brinz-lessHeightSlide" ng-show="itemDetailsForm['itemKgs_'+$index].$error.pattern">Not a number!</p>
                             </div>
                             <div class="form-group col-xs-2" ng-class="{'has-error': itemDetailsForm['itemPrice_'+ $index].$touched && !item.soldPrice}">
                                 <label for="email">Price per KG:</label>
                                 <input type="text" class="form-control" name="itemPrice_{{$index}}" placeholder="Price per KG" ng-model="item.soldPrice"
-                                    ng-required="true" ng-pattern="/^\d+$/">
+                                    ng-required="true" ng-pattern="/^\d+$/" ng-change="billingController.calculateTotal()">
                                 <p class="Brinz-lessHeightSlide" ng-show="itemDetailsForm['itemPrice_'+ $index].$touched && !item.soldPrice && !itemDetailsForm['itemPrice_'+ $index].$error.pattern">Please fill!</p>
                                 <span class="Brinz-lessHeightSlide" ng-show="itemDetailsForm['itemPrice_'+ $index].$error.pattern">Not a number!</span>
                             </div>
                             <div class="form-group col-xs-2" ng-class="{'has-error': itemDetailsForm['itemBags_'+ $index].$touched && !item.bags}">
                                 <label for="email">No.of Bags:</label>
                                 <input type="text" class="form-control" name="itemBags_{{$index}}" placeholder="No.of bags" ng-model="item.bags" ng-required="true"
-                                    ng-pattern="/^\d+$/">
+                                    ng-pattern="/^\d+$/" ng-change="billingController.calculateTotal()">
                                 <p class="Brinz-lessHeightSlide" ng-show=" itemDetailsForm['itemBags_'+ $index].$touched && !item.bags && !itemDetailsForm['itemBags_'+ $index].$error.pattern">Please fill!</p>
                                 <span class="Brinz-lessHeightSlide" ng-show="itemDetailsForm['itemBags_'+ $index].$error.pattern">Not a number!</span>
                             </div>
@@ -80,6 +80,7 @@
                         </div>
                     </form>
                 </div>
+                <label class="Brinz-bill-total">Total: {{billingController.total | currency:"₹"}}</label>
                 <button type="submit" class="btn btn-default Brinz-float-right" ng-disabled="customerDetailsForm.$invalid || itemDetailsForm.$invalid"
                     ng-click="billingController.saveBill()">Submit</button>
 

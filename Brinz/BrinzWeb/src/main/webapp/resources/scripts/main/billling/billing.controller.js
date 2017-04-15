@@ -2,11 +2,13 @@
 {
 
 	function billingController($scope, utilsService, customerService, itemsService, billingService) {
+
 		const me = this;
 		me.bill = {};
 		me.bill.items = [{ name: "" }];
 		me.foundCustomers = [];
 		me.foundItems = [];
+		me.total = 0;
 
 		$scope.amountReadOnly = true;
 
@@ -91,6 +93,10 @@
 				//item.creditAmoount;
 			}
 
+		};
+
+		me.calculateTotal = function () {
+			me.total = billingService.calculateTotal(me.bill.items);
 		};
 
 		function processError(response) {

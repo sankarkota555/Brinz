@@ -55,6 +55,19 @@
             return preparedBill;
         }
 
+        /**
+         * Calculates total amount of bill
+         */
+        me.calculateTotal = function (items) {
+            let total = 0;
+            for (index in items) {
+                if (items[index].kgs && items[index].soldPrice) {
+                    total += items[index].kgs * items[index].soldPrice;
+                }
+            }
+            return total;
+        }
+
     };
 
     app.service('billingService', billingService);
