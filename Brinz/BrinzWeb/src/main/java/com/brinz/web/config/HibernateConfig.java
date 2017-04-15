@@ -13,6 +13,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -22,9 +24,13 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 @EnableJpaRepositories(basePackages = "com.brinz.repositories") // package name where is you
                                                                   // spring data repositories
                                                                   // written
+@PropertySource("classpath:dataSource.properties")
 public class HibernateConfig {
 
   private static Logger log = Logger.getLogger(HibernateConfig.class);
+  
+  @Autowired
+  private Environment environment;
 
   @Autowired
   private DataSource dataSource;
@@ -32,10 +38,10 @@ public class HibernateConfig {
   @Bean
   public DataSource getDataSource() {
     BasicDataSource ds = new BasicDataSource();
-    ds.setUsername("brinz");
-    ds.setPassword("brinz");
-    ds.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
-    ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+    ds.setUsername(environment.getProperty("dataSourceUserName"));
+    ds.setPassword(environment.getProperty("dataSourcePassword"));
+    ds.setUrl(environment.getProperty("dataSourceUrl"));
+    ds.setDriverClassName(environment.getProperty("dataSourceDriverClass"));
     log.info("Data source object created " + ds);
     return ds;
   }
