@@ -24,28 +24,28 @@ public class CsrfHeaderFilter extends OncePerRequestFilter {
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
       FilterChain filterChain) throws ServletException, IOException {
-    log.info("In filter for csrf  ");
-    log.info("ser context path: " + request.getContextPath());
+    log.debug("In filter for csrf  ");
+    log.debug("ser context path: " + request.getContextPath());
     HttpSession session = request.getSession(false);
     if (session != null) {
-      log.info("session id in filter: " + session.getId());
-      log.info("sessiion is new: " + session.isNew());
-      log.info("session inactive interval time: " + session.getMaxInactiveInterval());
+      log.debug("session id in filter: " + session.getId());
+      log.debug("sessiion is new: " + session.isNew());
+      log.debug("session inactive interval time: " + session.getMaxInactiveInterval());
     } else {
-      log.info("session is : " + session);
+      log.debug("session is : " + session);
     }
 
     CsrfToken csrf = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
     if (csrf != null) {
       Cookie cookie = WebUtils.getCookie(request, "XSRF-TOKEN");
       String token = csrf.getToken();
-      log.info("csrf token: {}", token);
+      log.debug("csrf token: {}", token);
       if (cookie == null || token != null && !token.equals(cookie.getValue())) {
         cookie = new Cookie("XSRF-TOKEN", token);
-        log.info("cookie created");
+        log.debug("cookie created");
         cookie.setPath(request.getContextPath());
         response.addCookie(cookie);
-        log.info("cookie added to response");
+        log.debug("cookie added to response");
       }
     }
 
