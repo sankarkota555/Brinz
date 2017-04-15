@@ -50,6 +50,7 @@
                 }
 
                 preparedBill.soldItems.push(soldItem);
+                preparedBill.totalAmount = bill.totalAmount;
             }
 
             return preparedBill;

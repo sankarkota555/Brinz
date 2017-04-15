@@ -20,9 +20,6 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
 @Table(name = "BRINZ_BILL")
 @DynamicInsert
@@ -47,6 +44,9 @@ public class Bill implements Serializable {
   @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
   @JoinColumn(name = "customer_id")
   private Customer customer;
+  
+  @Column(name="total_amount")
+  private Long totalAmount;
 
   public Long getBillId() {
     return billId;
@@ -80,4 +80,13 @@ public class Bill implements Serializable {
     this.billDate = billDate;
   }
 
+  public Long getTotalAmount() {
+    return totalAmount;
+  }
+
+  public void setTotalAmount(Long totalAmount) {
+    this.totalAmount = totalAmount;
+  }
+
+  
 }
