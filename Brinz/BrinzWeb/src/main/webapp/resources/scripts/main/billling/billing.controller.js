@@ -17,12 +17,16 @@
 			if (name && name.length >= 2) {
 				customerService.findByCustomerName(name).then(
 					function (response) {
-						console.log("returnung data: ", response.data);
-						me.foundCustomers = response.data;
+						if (response) {
+							me.foundCustomers = response.data;
+						} else {
+							me.foundCustomers = [];
+						}
 					},
 					function (response) {
 						console.log("error while searching user:", response);
 						me.foundCustomers = [];
+						processError(response);
 					});
 			}
 
@@ -35,12 +39,17 @@
 			if (name && name.length >= 2) {
 				itemsService.findItemsByName(name).then(
 					function (response) {
-						console.log("returnung data: ", response.data);
-						me.foundItems = response.data;
+						if (response) {
+							me.foundItems = response.data;
+						} else {
+							me.foundItems = [];
+						}
+
 					},
 					function (response) {
 						console.log("error while searching user:", response);
 						me.foundItems = [];
+						processError(response);
 					});
 			}
 
@@ -57,16 +66,18 @@
 		 * to save bill.
 		 */
 		me.saveBill = function () {
+			utilsService.confirmationPopup('Are you want to save it', saveBillToDb);
+		};
+
+		function saveBillToDb() {
 			billingService.saveBill(me.bill).then(
 				function (response) {
-					console.log("returnung data: ", response.data);
-
+					utilsService.confirmationPopup('Are you want to save it', saveBillToDb);
 				},
 				function (response) {
-					console.log("error while saving bill:", response);
-
+					processError(response);
 				});
-		};
+		}
 
 		/**
 		 * This function will executes when customer is selected from Auto completed
@@ -81,6 +92,10 @@
 			}
 
 		};
+
+		function processError(response) {
+			utilsService.processError(response.data.error, response.data.exception + ":" + response.data.message);
+		}
 
 
 	}
