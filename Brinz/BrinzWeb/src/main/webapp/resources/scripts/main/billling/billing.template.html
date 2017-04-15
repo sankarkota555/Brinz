@@ -48,7 +48,7 @@
                             </div>
                             <div class="form-group col-xs-2" ng-class="{'has-error': itemDetailsForm['itemKgs_'+$index].$touched && !item.kgs}">
                                 <label for="name">No.of Kgs:</label>
-                                <input type="text" class="form-control" name="itemKgs_{{$index}}" placeholder="NO.of KGS" ng-model="item.kgs" ng-required="true"
+                                <input type="text" class="form-control" name="itemKgs_{{$index}}" placeholder="No.of KGS" ng-model="item.kgs" ng-required="true"
                                     ng-pattern="/^\d+$/">
                                 <p class="Brinz-lessHeightSlide" ng-show="itemDetailsForm['itemKgs_'+$index].$touched && !item.kgs && !itemDetailsForm['itemKgs_'+$index].$error.pattern">Please fill!</p>
                                 <p class="Brinz-lessHeightSlide" ng-show="itemDetailsForm['itemKgs_'+$index].$error.pattern">Not a number!</p>
