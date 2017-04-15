@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.ResourceBundleViewResolver;
 
 @Configuration
 @ComponentScan(basePackages = "com.brinz")
@@ -22,13 +23,13 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
   }
   
   
- /* @Bean
+  @Bean
   public ViewResolver getResourceBundleView(){
     ResourceBundleViewResolver resourceBundleViewResolver = new ResourceBundleViewResolver();
     resourceBundleViewResolver.setBasename("views");
     resourceBundleViewResolver.setOrder(2);    
     return resourceBundleViewResolver;
-  }*/
+  }
   
   @Override
   public void addResourceHandlers(final ResourceHandlerRegistry registry) {

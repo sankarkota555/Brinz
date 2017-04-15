@@ -12,5 +12,12 @@ public interface BillService {
    * @return saved bill ID
    */
   Long saveBill(Bill bill);
+  
+  /**
+   * Gives bill based on given ID
+   * @param billId {@link Bill} ID
+   * @return {@link Bill} object
+   */
+  Bill getBillById(Long billId);
 
 }

@@ -87,4 +87,9 @@ public class BillServiceImpl implements BillService {
     return bill.getBillId();
   }
 
+  @Override
+  public Bill getBillById(Long billId) {
+    return billRepository.findOne(billId);
+  }
+
 }
