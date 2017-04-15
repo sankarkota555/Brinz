@@ -36,6 +36,9 @@ public class SoldItem implements Serializable {
   @Column(name = "sold_price", nullable = false)
   private Integer soldPrice;
 
+  @Column(name = "Num_Of_bags", nullable = false)
+  private Integer noOfBags;
+
   public Long getSoldItemId() {
     return soldItemId;
   }
@@ -66,6 +69,14 @@ public class SoldItem implements Serializable {
 
   public void setSoldPrice(Integer soldPrice) {
     this.soldPrice = soldPrice;
+  }
+
+  public Integer getNoOfBags() {
+    return noOfBags;
+  }
+
+  public void setNoOfBags(Integer noOfBags) {
+    this.noOfBags = noOfBags;
   }
 
 }

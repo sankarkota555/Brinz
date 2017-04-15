@@ -72,6 +72,7 @@ public class BillServiceImpl implements BillService {
       billedItem.setItem(item);
       billedItem.setSoldPrice(soldItem.getSoldPrice());
       billedItem.setSoldQuantity(soldItem.getSoldQuantity());
+      billedItem.setNoOfBags(soldItem.getNoOfBags());
 
       soldItemsList.add(billedItem);
     }

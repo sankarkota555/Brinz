@@ -35,10 +35,11 @@
                 preparedBill.customer.phone = bill.customer.phone;
             }
             // prepare sold item details
-            for (let index = 0; index < bill.items.length; index++) {
+            for (index in bill.items) {
                 const soldItem = { item: {} };
                 soldItem.soldQuantity = bill.items[index].kgs;
                 soldItem.soldPrice = bill.items[index].soldPrice;
+                soldItem.noOfBags = bill.items[index].bags;
                 // check if item existence 
                 if (bill.items[index].selectedItem && bill.items[index].selectedItem.itemId) {
                     // if exists add item ID
