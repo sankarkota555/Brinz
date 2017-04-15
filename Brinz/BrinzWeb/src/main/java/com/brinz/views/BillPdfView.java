@@ -65,7 +65,7 @@ public class BillPdfView extends AbstractItextPdfView {
         + getDownloadableFileName(bill.getBillId(), bill.getCustomer().getCustomerName()));
 
     // Add header table (office details)
-    doc.add(getHeaderTable());
+    doc.add(getHeaderTable(bill.getBillDate(),bill.getCustomer().getCustomerName()));
 
     // Add line separator
     doc.add(getLineSeparator(-10));
@@ -77,13 +77,13 @@ public class BillPdfView extends AbstractItextPdfView {
     doc.add(getPurchaseDetailsTable(25, bill.getSoldItems(), bill.getTotalAmount(), bill.getCustomer().getCreditAmoount()));
 
     // Add line separator
-    doc.add(getLineSeparator(-26));
+    //doc.add(getLineSeparator(-26));
 
     // Add Footer table
-    doc.add(getFooter(15));
+   // doc.add(getFooter(15));
 
     // Add notes to customer
-    doc.add(getNotes(0));
+   // doc.add(getNotes(0));
 
    /* Image barCodeImage = getBarcodeImage(bill.getBillId(), bill.getTotalAmount());
     barCodeImage.setAbsolutePosition(450, 625);
@@ -115,7 +115,7 @@ public class BillPdfView extends AbstractItextPdfView {
     return null;
   }
 
-  private PdfPTable getHeaderTable() throws DocumentException {
+  private PdfPTable getHeaderTable(Date billDate, String customerName) throws DocumentException {
 
     final int phoneHeight = 25;
 
@@ -154,7 +154,7 @@ public class BillPdfView extends AbstractItextPdfView {
       
       
     // add company heading cell
-      headerTable.addCell(headingCell);
+      headerTable.addCell(headingCell); // add heading of org
     
       PdfPCell phoneLeftCell = new PdfPCell(new Phrase("Phone num1"));
       phoneLeftCell.setBorder(Rectangle.NO_BORDER);
@@ -162,22 +162,31 @@ public class BillPdfView extends AbstractItextPdfView {
       phoneLeftCell.setHorizontalAlignment(Element.ALIGN_LEFT);
       phoneLeftCell.setColspan(2);
       
-      headerTable.addCell(phoneLeftCell);
+      headerTable.addCell(phoneLeftCell); // add left side phone
       
       PdfPCell phoneRightCell = new PdfPCell(new Phrase("Phone num2"));
       phoneRightCell.setBorder(Rectangle.NO_BORDER);
       phoneRightCell.setFixedHeight(phoneHeight);
       phoneRightCell.setHorizontalAlignment(Element.ALIGN_LEFT);
       
-      headerTable.addCell(phoneRightCell);
+      headerTable.addCell(phoneRightCell); // add right side phone
       
-      PdfPCell customerNameCell = new PdfPCell(new Phrase("Cus Name"));
+      PdfPCell customerNameCell = new PdfPCell(new Phrase(customerName));
       customerNameCell.setBorder(Rectangle.NO_BORDER);
       customerNameCell.setFixedHeight(phoneHeight);
       customerNameCell.setHorizontalAlignment(Element.ALIGN_LEFT);
       customerNameCell.setColspan(3);
       
-      headerTable.addCell(customerNameCell);
+      headerTable.addCell(customerNameCell); // add customer name
+      
+      PdfPCell billDateCell = new PdfPCell(new Phrase(customerName));
+      billDateCell.setBorder(Rectangle.NO_BORDER);
+      billDateCell.setFixedHeight(phoneHeight);
+      billDateCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+      billDateCell.setColspan(3);
+      billDateCell.setPhrase(new Phrase(String.valueOf(billDate)));
+      
+      headerTable.addCell(billDateCell); // add bill date
 
       // add name in center
      // innerTable.addCell(textCell);
@@ -268,14 +277,14 @@ public class BillPdfView extends AbstractItextPdfView {
 
     detailsTable.setSpacingBefore(spaceTop);
 
-    float[] columnWidths = new float[] { 20f, 18f, 12f, 20f, 20f };
+    float[] columnWidths = new float[] { 20f, 18f, 20f, 20f, 20f };
     detailsTable.setWidths(columnWidths);
     detailsTable.getDefaultCell().setBorder(Rectangle.NO_BORDER);
     detailsTable.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
 
     detailsTable.addCell(new Phrase("Item Name", boldFont));
     detailsTable.addCell(new Phrase("No.of Bags", boldFont));
-    detailsTable.addCell(new Phrase("Price", boldFont));
+    detailsTable.addCell(new Phrase("Price per KG", boldFont));
     detailsTable.addCell(new Phrase("No.of KGS", boldFont));
     detailsTable.addCell(new Phrase("Amount", boldFont));
 

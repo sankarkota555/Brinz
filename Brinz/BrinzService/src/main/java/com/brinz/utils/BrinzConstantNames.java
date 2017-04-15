@@ -2,7 +2,7 @@ package com.brinz.utils;
 
 public class BrinzConstantNames {
 
-	public static final String shopName = "Name Name NameNameNameNameName";
+	public static final String shopName = "Name of Organization";
 
 	public static final String shopAddress = "Address Address Address Address Address Address";
 
