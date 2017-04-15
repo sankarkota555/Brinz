@@ -73,7 +73,8 @@
 		function saveBillToDb() {
 			billingService.saveBill(me.bill).then(
 				function (response) {
-					utilsService.confirmationPopup('Bill saved', null);
+					//utilsService.confirmationPopup('Bill saved', null);
+					billingService.printBillConirmation(response.data);
 					resetBill();
 				},
 				function (response) {

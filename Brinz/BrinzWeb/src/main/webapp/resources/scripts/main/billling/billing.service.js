@@ -1,7 +1,7 @@
 "use strict";
 {
 
-    function billingService($http) {
+    function billingService($http, $window, utilsService) {
         const me = this;
 
         /**
@@ -68,6 +68,20 @@
                 }
             }
             return total;
+        };
+
+        /**
+         * Shows popup for confirmation of print bill
+         */
+        me.printBillConirmation = function (billId) {
+            utilsService.confirmationPopup("Do You want to print this?", me.printBill, null, billId);
+        };
+
+        /**
+         * Loads given bill in new window for printing purpose.
+         */
+        me.printBill = function (billId) {
+            $window.open('getBillAsPdf?billId=' + billId, "", 'width=500,height=400');
         }
 
     };
