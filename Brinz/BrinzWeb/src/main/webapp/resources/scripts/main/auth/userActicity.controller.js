@@ -9,7 +9,7 @@
                 console.log("successfully logged out");
                 console.log(response);
                 userActivityService.logoutSuccess();
-                utilsService.alertPopup('Logout Success!!', null, userActivityService.navigateTologin);
+                utilsService.alertPopup('Successfully logged out !!', "", userActivityService.navigateTologin);
             },
                 function (response) {
                     console.log("failed to logout");

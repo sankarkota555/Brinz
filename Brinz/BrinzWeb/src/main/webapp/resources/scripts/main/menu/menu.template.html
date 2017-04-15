@@ -4,15 +4,22 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">WebSiteName</a>
             </div>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" ng-controller="userActivityController as userActivityController">
                 <li ng-class="{ active: isActive('/')}"><a ui-sref="home">Link1</a></li>
                 <li ng-class="{ active: isActive('/billing')}"><a ui-sref="billing">Link1</a></li>
                 <li ng-class="{ active: isActive('/viewBills')}"><a ui-sref="viewBills">VIEW Link1</a></li>
-                <li ng-class="{ active: isActive('/manage')}"><a ui-sref="manage">Link1</a></li>
-                <!-- <li ng-class="{ active: isActive('/gallery')}"><a ui-sref="gallery">GALLERY</a></li> -->
-                <li ng-controller="userActivityController as userActivityController">
-                    <md-button class="md-raised md-warn" ng-click="userActivityController.logout()">Link1</md-button>
-                </li>
+                <li ng-class="{ active: isActive('/viewBills')}"><a class="Brinz-cursor" ng-click="userActivityController.logout()">Logout</a></li>
+                <!--  <li ng-class="{ active: isActive('/manage')}"><a ui-sref="manage">Link1</a></li>
+                <li ng-class="{ active: isActive('/gallery')}"><a ui-sref="gallery">GALLERY</a></li> 
+                <li ng-class="{ active: isActive('/manage')}" ng-controller="userActivityController as userActivityController">
+                    <div uib-dropdown>
+                        <a ui-sref="viewBills" uib-dropdown-toggle> Settings</a>
+                        <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+                            <li ng-click="userActivityController.logout()"> Logout</li>
+                        </ul>
+                    </div>
+                </li> -->
+
             </ul>
         </div>
     </nav>
