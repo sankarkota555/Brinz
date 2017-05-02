@@ -1,0 +1,32 @@
+<div class="row">
+
+    <table class="table table-hover Brinz-table-center">
+        <thead>
+            <tr>
+                <th class="col-xs-1">Select</th>
+                <th>Customer Name</th>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>No.of bags</th>
+                <th>Date</th>
+                <th>Paid</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in viewSoldItemsController.soldItems" ng-class="{'Brinz-item-selected':selected}">
+                <td cclass="col-xs-1"><input type="checkbox" ng-model="selected"></td>
+                <td>{{item.customer.customerName}}</td>
+                <td>{{item.item}}</td>
+                <td>{{item.soldQuantity}}</td>
+                <td>{{item.soldPrice}}</td>
+                <td>{{item.noOfBags}}</td>
+                <td>{{item.soldDate}}</td>
+                <td>{{item.paidDate}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+
+</div>

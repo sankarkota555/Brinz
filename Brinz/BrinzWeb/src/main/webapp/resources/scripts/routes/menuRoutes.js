@@ -12,11 +12,11 @@
             templateUrl: 'res/scripts/main/billling/billing.template.html',
             controller: 'billingController',
             controllerAs: 'billingController'
-        }).state('viewBills', {
-            url: '/viewBills',
-            templateUrl: 'res/app/main/viewPort/content/viewBills/viewBills.template.html',
-            controller: 'viewBillsController',
-            controllerAs: 'viewBillsController'
+        }).state('viewSoldItems', {
+            url: '/viewSoldItems',
+            templateUrl: 'res/scripts/main/viewSoldItems/viewSoldItems.template.html',
+            controller: 'viewSoldItemsController',
+            controllerAs: 'viewSoldItemsController'
         }).state('manage', {
             url: '/manage',
             templateUrl: 'res/app/main/viewPort/content/manage/manage.template.html',
@@ -24,12 +24,12 @@
             controllerAs: 'manageController'
         }).state('manage.items', {
             url: '/items',
-            templateUrl: 'res/app/main/viewPort/content/viewBills/viewBills.template.html',
+            templateUrl: 'res/main/viewPort/content/viewBills/viewBills.template.html',
             controller: 'itemsController',
             controllerAs: 'itemsController'
         }).state('manage.companies', {
             url: '/companies',
-            templateUrl: 'res/app/main/viewPort/content/viewBills/viewBills.template.html',
+            templateUrl: 'res/main/viewPort/content/viewBills/viewBills.template.html',
             controller: 'itemsController',
             controllerAs: 'itemsController'
         });

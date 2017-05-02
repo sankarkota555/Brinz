@@ -22,7 +22,7 @@ public class ItemServiceImpl implements ItemService {
 
   @Override
   public List<Item> searchItemsByName(String searchQuery) {
-    return itemRepository.findItemsByName(searchQuery.toLowerCase());
+    return itemRepository.findByItemNameStartingWith(searchQuery.toLowerCase());
   }
 
   @Override

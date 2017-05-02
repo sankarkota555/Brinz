@@ -28,7 +28,7 @@ public class CustomerServiceImpl implements CustomerService {
 
   @Override
   public List<CustomerDTO> findCustomersByName(String name) {
-    return brinzMapper.mapCustomerToDto(customerRepository.findCustomersByName(name.toLowerCase()));
+    return brinzMapper.mapCustomerToDto(customerRepository.findByCustomerNameStartingWith(name.toLowerCase()));
   }
 
 }
