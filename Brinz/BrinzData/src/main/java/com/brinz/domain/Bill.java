@@ -28,24 +28,24 @@ public class Bill implements Serializable {
   private static final long serialVersionUID = -1004192530915664302L;
 
   @Id
-  @Column(name = "bill_id")
+  @Column(name = "BILL_ID")
   @GenericGenerator(name = "inc", strategy = "increment")
   @GeneratedValue(generator = "inc")
   private Long billId;
 
   @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-  @JoinColumn(name = "bill_id_fk")
+  @JoinColumn(name = "BILL_ID_FK")
   private List<SoldItem> soldItems;
 
   @Temporal(TemporalType.DATE)
-  @Column(name = "bill_date", nullable = false)
+  @Column(name = "BILL_DATE", nullable = false)
   private Date billDate;
 
   @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-  @JoinColumn(name = "customer_id")
+  @JoinColumn(name = "CUSTOMER_ID")
   private Customer customer;
   
-  @Column(name="total_amount")
+  @Column(name="TOTAL_AMOUNT")
   private Long totalAmount;
 
   public Long getBillId() {

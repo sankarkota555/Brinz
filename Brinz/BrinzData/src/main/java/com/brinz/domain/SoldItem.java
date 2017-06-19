@@ -24,34 +24,34 @@ public class SoldItem implements Serializable {
   private static final long serialVersionUID = 7302069564698380875L;
 
   @Id
-  @Column(name = "sild_item_id")
+  @Column(name = "SILD_ITEM_ID")
   @GenericGenerator(name = "inc", strategy = "increment")
   @GeneratedValue(generator = "inc")
   private Long soldItemId;
 
   @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-  @JoinColumn(name = "item_id_fk")
+  @JoinColumn(name = "ITEM_ID_FK")
   private Item item;
 
   @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-  @JoinColumn(name = "customer_id_fk")
+  @JoinColumn(name = "CUSTOMER_ID_FK")
   private Customer customer;
 
-  @Column(name = "sold_quantity", nullable = false)
+  @Column(name = "SOLD_QUANTITY", nullable = false)
   private Integer soldQuantity;
 
-  @Column(name = "sold_price", nullable = false)
+  @Column(name = "SOLD_PRICE", nullable = false)
   private Integer soldPrice;
 
-  @Column(name = "Num_Of_bags", nullable = false)
+  @Column(name = "NUM_OF_BAGS", nullable = false)
   private Integer noOfBags;
 
   @Temporal(TemporalType.DATE)
-  @Column(name = "sold_date", nullable = false)
+  @Column(name = "SOLD_DATE", nullable = false)
   private Date soldDate;
 
   @Temporal(TemporalType.DATE)
-  @Column(name = "paid_date")
+  @Column(name = "PAID_DATE")
   private Date paidDate;
 
   public Long getSoldItemId() {

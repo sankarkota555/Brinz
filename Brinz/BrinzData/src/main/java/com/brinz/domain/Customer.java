@@ -24,18 +24,18 @@ public class Customer implements Serializable {
   private static final long serialVersionUID = -6904224747902137198L;
 
   @Id
-  @Column(name = "customer_id")
+  @Column(name = "CUSTOMER_ID")
   @GenericGenerator(name = "inc", strategy = "increment")
   @GeneratedValue(generator = "inc")
   private Long customerId;
 
-  @Column(name = "customer_name", length = 75, nullable = false)
+  @Column(name = "CUSTOMER_NAME", length = 75, nullable = false)
   private String customerName;
 
-  @Column(name = "phone_number", length = 13, unique = true)
+  @Column(name = "PHONE_NUMBER", length = 13, unique = true)
   private String phone;
 
-  @Column(name = "credit_Amoount")
+  @Column(name = "CREDIT_AMOOUNT")
   private Long creditAmoount;
 
   @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)

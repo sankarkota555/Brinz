@@ -17,15 +17,15 @@ public class Item implements Serializable {
   private static final long serialVersionUID = 7948040085269877913L;
 
   @Id
-  @Column(name = "item_id")
+  @Column(name = "ITEM_ID")
   @GenericGenerator(name = "inc", strategy = "increment")
   @GeneratedValue(generator = "inc")
   private Integer itemId;
 
-  @Column(name = "item_name", length = 100, nullable = false, unique = true)
+  @Column(name = "ITEM_NAME", length = 100, nullable = false, unique = true)
   private String itemName;
 
-  @Column(name = "price", length = 6)
+  @Column(name = "PRICE", length = 6)
   private Integer price;
 
   public Integer getItemId() {
