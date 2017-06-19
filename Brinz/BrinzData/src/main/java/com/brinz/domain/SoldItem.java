@@ -1,6 +1,7 @@
 package com.brinz.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -30,6 +33,10 @@ public class SoldItem implements Serializable {
   @JoinColumn(name = "item_id_fk")
   private Item item;
 
+  @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+  @JoinColumn(name = "customer_id_fk")
+  private Customer customer;
+
   @Column(name = "sold_quantity", nullable = false)
   private Integer soldQuantity;
 
@@ -38,6 +45,14 @@ public class SoldItem implements Serializable {
 
   @Column(name = "Num_Of_bags", nullable = false)
   private Integer noOfBags;
+
+  @Temporal(TemporalType.DATE)
+  @Column(name = "sold_date", nullable = false)
+  private Date soldDate;
+
+  @Temporal(TemporalType.DATE)
+  @Column(name = "paid_date")
+  private Date paidDate;
 
   public Long getSoldItemId() {
     return soldItemId;
@@ -77,6 +92,30 @@ public class SoldItem implements Serializable {
 
   public void setNoOfBags(Integer noOfBags) {
     this.noOfBags = noOfBags;
+  }
+
+  public Customer getCustomer() {
+    return customer;
+  }
+
+  public void setCustomer(Customer customer) {
+    this.customer = customer;
+  }
+
+  public Date getSoldDate() {
+    return soldDate;
+  }
+
+  public void setSoldDate(Date soldDate) {
+    this.soldDate = soldDate;
+  }
+
+  public Date getPaidDate() {
+    return paidDate;
+  }
+
+  public void setPaidDate(Date paidDate) {
+    this.paidDate = paidDate;
   }
 
 }
